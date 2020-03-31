@@ -1959,6 +1959,101 @@
             "description": "OK",
             "content": {
               "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "changelogId": {
+                            "type": "string"
+                          },
+                          "action": {
+                            "type": "string"
+                          },
+                          "positionId": {
+                            "type": "string"
+                          },
+                          "empno": {
+                            "type": "string"
+                          },
+                          "changedateTime": {
+                            "type": "string"
+                          },
+                          "actionDateTime": {
+                            "type": "string"
+                          },
+                          "arg0": {
+                            "type": "string"
+                          },
+                          "arg1": {
+                            "type": "string"
+                          },
+                          "arg2": {
+                            "type": "string"
+                          },
+                          "arg3": {
+                            "type": "string"
+                          },
+                          "arg4": {
+                            "type": "string"
+                          },
+                          "arg5": {
+                            "type": "string"
+                          },
+                          "undid": {
+                            "type": "string"
+                          },
+                          "user": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "ActionLog_ID": {
+                            "type": "string"
+                          },
+                          "Action_ID": {
+                            "type": "string"
+                          },
+                          "Desc": {
+                            "type": "string"
+                          },
+                          "On": {
+                            "type": "string"
+                          },
+                          "Text": {
+                            "type": "string"
+                          },
+                          "Coded": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string"
+                                },
+                                "rawVal": {
+                                  "type": "string"
+                                },
+                                "val": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "type": "array"
+                },
                 "examples": {
                   "/ActionLog": {
                     "value": [
@@ -2073,7 +2168,25 @@
             }
           },
           "204": {
-            "description": "No Content"
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "t1": {
+                        "type": "string"
+                      },
+                      "t2": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
           },
           "401": {
             "description": "Unauthorized"
