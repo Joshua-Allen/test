@@ -1,0 +1,3540 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "ASAT API",
+    "version": "1.0",
+    "contact": {
+      "name": "Info Systems",
+      "email": "APDInfoSystems@austintexas.gov"
+    },
+    "description": "The ASAT API",
+    "license": {
+      "name": "None"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://localhost:44324",
+      "description": "Testing"
+    },
+    {
+      "description": "Dev",
+      "url": "https://apdwebdev.ausps.org/asatapi"
+    }
+  ],
+  "paths": {
+    "/Data/Actions/{actionId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "integer"
+          },
+          "name": "actionId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Get an Action",
+        "tags": [
+          "Data"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "actionId": {
+                      "type": "integer"
+                    },
+                    "desc": {
+                      "type": "string"
+                    },
+                    "displayText": {
+                      "type": "string"
+                    },
+                    "arg0Type": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "arg1Type": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "arg2Type": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "arg3Type": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "arg4Type": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "arg5Type": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                },
+                "examples": {
+                  "/Data/Actions/1000": {
+                    "value": {
+                      "actionId": 1000,
+                      "desc": "Nothing. used for notes or tests",
+                      "displayText": "Note: {arg0}",
+                      "arg0Type": "Note",
+                      "arg1Type": null,
+                      "arg2Type": null,
+                      "arg3Type": null,
+                      "arg4Type": null,
+                      "arg5Type": null
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "operationId": "get-Data-Actions-id",
+        "description": "Gets the data for one Action",
+        "parameters": [
+          {
+            "schema": {
+              "type": "number",
+              "default": "1.0",
+              "format": "double"
+            },
+            "in": "header",
+            "name": "api-version",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "/Data/Actions": {
+      "get": {
+        "summary": "List all the Actions",
+        "tags": [
+          "Data"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "actionId": {
+                        "type": "integer"
+                      },
+                      "desc": {
+                        "type": "string"
+                      },
+                      "displayText": {
+                        "type": "string"
+                      },
+                      "arg0Type": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "arg1Type": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "arg2Type": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "arg3Type": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "arg4Type": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "arg5Type": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "/Data/Actions": {
+                    "value": [
+                      {
+                        "actionId": 1000,
+                        "desc": "Nothing. used for notes or tests",
+                        "displayText": "Note: {arg0}",
+                        "arg0Type": "Note",
+                        "arg1Type": null,
+                        "arg2Type": null,
+                        "arg3Type": null,
+                        "arg4Type": null,
+                        "arg5Type": null
+                      },
+                      {
+                        "actionId": 1001,
+                        "desc": "Undo",
+                        "displayText": "Undo: {arg0}",
+                        "arg0Type": "Action",
+                        "arg1Type": null,
+                        "arg2Type": null,
+                        "arg3Type": null,
+                        "arg4Type": null,
+                        "arg5Type": null
+                      },
+                      {
+                        "actionId": 4004,
+                        "desc": "Update position",
+                        "displayText": "{arg0} info was updated.",
+                        "arg0Type": "Position",
+                        "arg1Type": "DivisionName",
+                        "arg2Type": "PostionType",
+                        "arg3Type": "Rank",
+                        "arg4Type": "LocationCode",
+                        "arg5Type": "Region"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-Data-Actions",
+        "description": "Gets the full list of all the data from the Actions.",
+        "parameters": [
+          {
+            "schema": {
+              "type": "number",
+              "default": "1.0",
+              "format": "double"
+            },
+            "in": "header",
+            "name": "api-version",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "/Data/Duties/{dutyId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "dutyId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Get a Duty",
+        "tags": [
+          "Data"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "dutyId": {
+                      "type": "string"
+                    },
+                    "info": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "active": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "/Data/Duties/CAST": {
+                    "value": {
+                      "dutyId": "CAST",
+                      "info": null,
+                      "active": 1
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "operationId": "get-Data-Duties-id",
+        "description": "Gets the data for one Duty",
+        "parameters": [
+          {
+            "schema": {
+              "type": "number",
+              "default": "1.0",
+              "format": "double"
+            },
+            "in": "header",
+            "name": "api-version",
+            "description": ""
+          }
+        ]
+      },
+      "put": {
+        "summary": "Update a Duty",
+        "operationId": "put-Data-Duties-id",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "304": {
+            "description": "Not Modified"
+          }
+        },
+        "tags": [
+          "Data"
+        ],
+        "description": "Update a Duty",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "Info",
+            "allowEmptyValue": false,
+            "description": ""
+          },
+          {
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query",
+            "name": "Active"
+          },
+          {
+            "schema": {
+              "type": "number",
+              "default": "1.0",
+              "format": "double"
+            },
+            "in": "header",
+            "name": "api-version",
+            "description": ""
+          }
+        ]
+      },
+      "post": {
+        "summary": "Creates a new Duty",
+        "operationId": "post-Data-Duties-dutyId",
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "409": {
+            "description": "Conflict, Id already exists."
+          }
+        },
+        "description": "Creates a new Duty",
+        "tags": [
+          "Data"
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "Info"
+          },
+          {
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query",
+            "name": "Active",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "number",
+              "default": "1.0",
+              "format": "double"
+            },
+            "in": "header",
+            "name": "api-version",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "/Data/Duties": {
+      "get": {
+        "summary": "List all the Duties",
+        "tags": [
+          "Data"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "dutyId": {
+                        "type": "string"
+                      },
+                      "info": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "active": {
+                        "type": "integer"
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "/Data/Duties": {
+                    "value": [
+                      {
+                        "dutyId": "AR",
+                        "info": null,
+                        "active": 1
+                      },
+                      {
+                        "dutyId": "Bilingual",
+                        "info": null,
+                        "active": 1
+                      },
+                      {
+                        "dutyId": "CAST",
+                        "info": null,
+                        "active": 1
+                      },
+                      {
+                        "dutyId": "SS",
+                        "info": null,
+                        "active": 1
+                      },
+                      {
+                        "dutyId": "SWAT Gold",
+                        "info": null,
+                        "active": 1
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-Data-Duties",
+        "description": "Gets the full list of all the data from the Duties",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "active",
+                "inactive"
+              ]
+            },
+            "in": "query",
+            "name": "State",
+            "description": ""
+          },
+          {
+            "schema": {
+              "type": "number",
+              "default": "1.0",
+              "format": "double"
+            },
+            "in": "header",
+            "name": "api-version",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "/Data/Locations/{locationId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "locationId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Get a Location",
+        "tags": [
+          "Data"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "locationId": {
+                      "type": "string"
+                    },
+                    "unit": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "address": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "building": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "email": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                },
+                "examples": {
+                  "/Data/Locations/F10001": {
+                    "value": {
+                      "locationId": "F10001",
+                      "unit": "5th Floor Administration: Chief's Office; Comm Police Support; Community Policing",
+                      "address": "715 E. 8th St, 78701",
+                      "building": "Headquarters",
+                      "email": null
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "operationId": "get-Data-Locations-id",
+        "description": "Gets the data for a Location",
+        "parameters": [
+          {
+            "schema": {
+              "type": "number",
+              "default": "1.0",
+              "format": "double"
+            },
+            "in": "header",
+            "name": "api-version",
+            "description": ""
+          }
+        ]
+      },
+      "post": {
+        "summary": "Creates a new Location",
+        "operationId": "post-Data-Locations-id",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "409": {
+            "description": "Conflict, Id already exists."
+          }
+        },
+        "tags": [
+          "Data"
+        ],
+        "description": "Creates a new Location",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "unit"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "address"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "building"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "email"
+          },
+          {
+            "schema": {
+              "type": "number",
+              "default": "1.0",
+              "format": "double"
+            },
+            "in": "header",
+            "name": "api-version",
+            "description": ""
+          }
+        ]
+      },
+      "put": {
+        "summary": "Update a Location",
+        "operationId": "put-Data-Locations-id",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "304": {
+            "description": "Not Modified"
+          }
+        },
+        "tags": [
+          "Data"
+        ],
+        "description": "Update a Location",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "unit"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "address"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "building"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "email"
+          },
+          {
+            "schema": {
+              "type": "number",
+              "default": "1.0",
+              "format": "double"
+            },
+            "in": "header",
+            "name": "api-version",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "/Data/Locations": {
+      "get": {
+        "summary": "List all the Locations",
+        "tags": [
+          "Data"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "locationId": {
+                        "type": "string"
+                      },
+                      "unit": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "address": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "building": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "email": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "/Data/Locations": {
+                    "value": [
+                      {
+                        "locationId": "F10001",
+                        "unit": "5th Floor Administration: Chief's Office; Comm Police Support; Community Policing",
+                        "address": "715 E. 8th St, 78701",
+                        "building": "Headquarters",
+                        "email": null
+                      },
+                      {
+                        "locationId": "F10021",
+                        "unit": "Auto Theft Interdiction",
+                        "address": "715 E. 8th St, 78701",
+                        "building": "Headquarters",
+                        "email": null
+                      },
+                      {
+                        "locationId": "F10117",
+                        "unit": "Region 3 Support; Aviation",
+                        "address": null,
+                        "building": "Airport",
+                        "email": null
+                      },
+                      {
+                        "locationId": "F10120",
+                        "unit": "STAR/Hwy.Response Team",
+                        "address": "4201 Ed Bluestein, 78721",
+                        "building": "Motorola",
+                        "email": null
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-Data-Locations",
+        "description": "Gets the full list of all the data from the Locations",
+        "parameters": [
+          {
+            "schema": {
+              "type": "number",
+              "default": "1.0",
+              "format": "double"
+            },
+            "in": "header",
+            "name": "api-version",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "/Data/PositionTypes/{positionTypeId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "positionTypeId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Get a PositionType",
+        "tags": [
+          "Data"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "active": {
+                      "type": "integer"
+                    },
+                    "info": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "positionTypeId": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "examples": {
+                  "/Data/PositionTypes/Headquarters": {
+                    "value": {
+                      "positionTypeId": "Headquarters",
+                      "info": null,
+                      "active": 1
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "operationId": "get-Data-PositionTypes-id",
+        "description": "Gets the data for a PositionType",
+        "parameters": [
+          {
+            "schema": {
+              "type": "number",
+              "default": "1.0",
+              "format": "double"
+            },
+            "in": "header",
+            "name": "api-version",
+            "description": ""
+          }
+        ]
+      },
+      "post": {
+        "summary": "Creates a new PositionType",
+        "operationId": "post-Data-PositionTypes-id",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "409": {
+            "description": "Conflict, Id already exists."
+          }
+        },
+        "tags": [
+          "Data"
+        ],
+        "description": "Creates a new PositionType",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "Info"
+          },
+          {
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query",
+            "name": "Active",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "number",
+              "default": "1.0",
+              "format": "double"
+            },
+            "in": "header",
+            "name": "api-version",
+            "description": ""
+          }
+        ]
+      },
+      "put": {
+        "summary": "Update a PositionType",
+        "operationId": "put-Data-PositionTypes-id",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "304": {
+            "description": "Not Modified"
+          }
+        },
+        "tags": [
+          "Data"
+        ],
+        "description": "Update a PositionType",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "Info"
+          },
+          {
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query",
+            "name": "Active"
+          },
+          {
+            "schema": {
+              "type": "number",
+              "default": "1.0",
+              "format": "double"
+            },
+            "in": "header",
+            "name": "api-version",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "/Data/PositionTypes": {
+      "get": {
+        "summary": "List all the PositionTypes",
+        "tags": [
+          "Data"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "positionTypeId": {
+                        "type": "string"
+                      },
+                      "info": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "active": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "/Data/PositionTypes": {
+                    "value": [
+                      {
+                        "positionTypeId": "Headquarters",
+                        "info": null,
+                        "active": 1
+                      },
+                      {
+                        "positionTypeId": "Investigation",
+                        "info": null,
+                        "active": 1
+                      },
+                      {
+                        "positionTypeId": "Patrol",
+                        "info": null,
+                        "active": 1
+                      },
+                      {
+                        "positionTypeId": "Patrol Support",
+                        "info": null,
+                        "active": 1
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-Data-PositionTypes",
+        "description": "Gets the full list of all the data from the PositionTypes",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "active",
+                "inactive"
+              ]
+            },
+            "in": "query",
+            "name": "State"
+          },
+          {
+            "schema": {
+              "type": "number",
+              "default": "1.0",
+              "format": "double"
+            },
+            "in": "header",
+            "name": "api-version",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "/Data/Ranks/{rankId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "rankId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Get a Rank",
+        "tags": [
+          "Data"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "rankId": {
+                      "type": "string"
+                    },
+                    "info": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "active": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "examples": {
+                  "/Data/Ranks/AC": {
+                    "value": {
+                      "rankId": "AC",
+                      "info": null,
+                      "active": 1
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "operationId": "get-Data-Ranks-id",
+        "description": "Gets the data for a Rank",
+        "parameters": [
+          {
+            "schema": {
+              "type": "number",
+              "default": "1.0",
+              "format": "double"
+            },
+            "in": "header",
+            "name": "api-version",
+            "description": ""
+          }
+        ]
+      },
+      "post": {
+        "summary": "Creates a new Rank",
+        "operationId": "post-Data-Ranks-id",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "409": {
+            "description": "Conflict, Id already exists."
+          }
+        },
+        "tags": [
+          "Data"
+        ],
+        "description": "Creates a new Rank",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "info"
+          },
+          {
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query",
+            "name": "active",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "number",
+              "default": "1.0",
+              "format": "double"
+            },
+            "in": "header",
+            "name": "api-version",
+            "description": ""
+          }
+        ]
+      },
+      "put": {
+        "summary": "Update a Rank",
+        "operationId": "put-Data-Ranks-id",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "304": {
+            "description": "Not Modified"
+          }
+        },
+        "tags": [
+          "Data"
+        ],
+        "description": "Update a Rank",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "info"
+          },
+          {
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query",
+            "name": "active",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "number",
+              "default": "1.0",
+              "format": "double"
+            },
+            "in": "header",
+            "name": "api-version",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "/Data/Ranks": {
+      "get": {
+        "summary": "List all the Ranks",
+        "tags": [
+          "Data"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "rankId": {
+                        "type": "string"
+                      },
+                      "info": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "active": {
+                        "type": "integer"
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "/Data/Ranks": {
+                    "value": [
+                      {
+                        "rankId": "AC",
+                        "info": null,
+                        "active": 1
+                      },
+                      {
+                        "rankId": "Chief",
+                        "info": null,
+                        "active": 1
+                      },
+                      {
+                        "rankId": "Ofc",
+                        "info": null,
+                        "active": 1
+                      },
+                      {
+                        "rankId": "Sgt",
+                        "info": null,
+                        "active": 1
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-Data-Ranks",
+        "description": "Gets the full list of all the data from the Ranks",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "active",
+                "inactive"
+              ]
+            },
+            "in": "query",
+            "name": "State"
+          },
+          {
+            "schema": {
+              "type": "number",
+              "default": "1.0",
+              "format": "double"
+            },
+            "in": "header",
+            "name": "api-version",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "/Data/Regions/{regionId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "regionId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Get a Region",
+        "tags": [
+          "Data"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "regionId": {
+                      "type": "string"
+                    },
+                    "info": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "active": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "/Data/Regions/DTAC+Support": {
+                    "value": {
+                      "regionId": "DTAC Support",
+                      "info": null,
+                      "active": 1
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "operationId": "get-Data-Regions-id",
+        "description": "Gets the data for a Region",
+        "parameters": [
+          {
+            "schema": {
+              "type": "number",
+              "default": "1.0",
+              "format": "double"
+            },
+            "in": "header",
+            "name": "api-version",
+            "description": ""
+          }
+        ]
+      },
+      "post": {
+        "summary": "Creates a new Region",
+        "operationId": "post-Data-Regions-id",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "409": {
+            "description": "Conflict, Id already exists."
+          }
+        },
+        "tags": [
+          "Data"
+        ],
+        "description": "Creates a new Region",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "info"
+          },
+          {
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query",
+            "name": "active",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "number",
+              "default": "1.0",
+              "format": "double"
+            },
+            "in": "header",
+            "name": "api-version",
+            "description": ""
+          }
+        ]
+      },
+      "put": {
+        "summary": "Update a Region",
+        "operationId": "put-Data-Regions-id",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "304": {
+            "description": "Not Modified"
+          }
+        },
+        "tags": [
+          "Data"
+        ],
+        "description": "Update a Region",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "info"
+          },
+          {
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query",
+            "name": "active",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "number",
+              "default": "1.0",
+              "format": "double"
+            },
+            "in": "header",
+            "name": "api-version",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "/Data/Regions": {
+      "get": {
+        "summary": "List all the Regions",
+        "tags": [
+          "Data"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "regionId": {
+                        "type": "string"
+                      },
+                      "info": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "active": {
+                        "type": "integer"
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "/Data/Regions": {
+                    "value": [
+                      {
+                        "regionId": "DTAC Support",
+                        "info": null,
+                        "active": 1
+                      },
+                      {
+                        "regionId": "Region I Support",
+                        "info": null,
+                        "active": 1
+                      },
+                      {
+                        "regionId": "Region III Support",
+                        "info": null,
+                        "active": 1
+                      },
+                      {
+                        "regionId": "Region IV Support",
+                        "info": null,
+                        "active": 1
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-Data-Regions",
+        "description": "Gets the full list of all the data from the ",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "active",
+                "inactive"
+              ]
+            },
+            "in": "query",
+            "name": "State"
+          },
+          {
+            "schema": {
+              "type": "number",
+              "default": "1.0",
+              "format": "double"
+            },
+            "in": "header",
+            "name": "api-version",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "/Data/Statuses/{statusId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "statusId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Get a Statuses",
+        "tags": [
+          "Data"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "statusId": {
+                      "type": "string"
+                    },
+                    "info": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "active": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "/Data/Statuses/Admin+Duty": {
+                    "value": {
+                      "statusId": "Admin Duty",
+                      "info": null,
+                      "active": 1
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "operationId": "get-Data-Statuses-id",
+        "description": "Gets the data for a Status",
+        "parameters": [
+          {
+            "schema": {
+              "type": "number",
+              "default": "1.0",
+              "format": "double"
+            },
+            "in": "header",
+            "name": "api-version",
+            "description": ""
+          }
+        ]
+      },
+      "post": {
+        "summary": "Creates a new Status",
+        "operationId": "post-Data-Statuses-id",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "409": {
+            "description": "Conflict, Id already exists."
+          }
+        },
+        "tags": [
+          "Data"
+        ],
+        "description": "Creates a new Status",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "info"
+          },
+          {
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query",
+            "required": true,
+            "name": "active"
+          },
+          {
+            "schema": {
+              "type": "number",
+              "default": "1.0",
+              "format": "double"
+            },
+            "in": "header",
+            "name": "api-version",
+            "description": ""
+          }
+        ]
+      },
+      "put": {
+        "summary": "Update a Status",
+        "operationId": "put-Data-Statuses-id",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "304": {
+            "description": "Not Modified"
+          }
+        },
+        "tags": [
+          "Data"
+        ],
+        "description": "Update a Status",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "info"
+          },
+          {
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query",
+            "name": "active",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "number",
+              "default": "1.0",
+              "format": "double"
+            },
+            "in": "header",
+            "name": "api-version",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "/Data/Statuses": {
+      "get": {
+        "summary": "List all the Statuses",
+        "tags": [
+          "Data"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "statusId": {
+                        "type": "string"
+                      },
+                      "info": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "active": {
+                        "type": "integer"
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "/Data/Statuses": {
+                    "value": [
+                      {
+                        "statusId": "Admin Duty",
+                        "info": null,
+                        "active": 1
+                      },
+                      {
+                        "statusId": "FMLA",
+                        "info": null,
+                        "active": 1
+                      },
+                      {
+                        "statusId": "Promotion Pending Placement",
+                        "info": null,
+                        "active": 1
+                      },
+                      {
+                        "statusId": "Restricted Duty",
+                        "info": null,
+                        "active": 1
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-Data-Statuses",
+        "description": "Gets the full list of all the data from the Statuses",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "active",
+                "inactive"
+              ]
+            },
+            "in": "query",
+            "name": "State"
+          },
+          {
+            "schema": {
+              "type": "number",
+              "default": "1.0",
+              "format": "double"
+            },
+            "in": "header",
+            "name": "api-version",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "/Data/Vacancy/{vacancyId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "vacancyId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Get a Vacancy",
+        "tags": [
+          "Data"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "vacancyId": {
+                      "type": "string"
+                    },
+                    "info": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "active": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "/Data/Vacancy/Death": {
+                    "value": {
+                      "vacancyId": "Death",
+                      "info": null,
+                      "active": 1
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "operationId": "get-Data-Vacancy-id",
+        "description": "Gets the data for a Vacancy",
+        "parameters": [
+          {
+            "schema": {
+              "type": "number",
+              "default": "1.0",
+              "format": "double"
+            },
+            "in": "header",
+            "name": "api-version",
+            "description": ""
+          }
+        ]
+      },
+      "post": {
+        "summary": "Creates a new Vacancy",
+        "operationId": "post-Data-Vacancy-id",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "409": {
+            "description": "Conflict, Id already exists."
+          }
+        },
+        "tags": [
+          "Data"
+        ],
+        "description": "Creates a new Vacancy",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "info"
+          },
+          {
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query",
+            "name": "active",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "number",
+              "default": "1.0",
+              "format": "double"
+            },
+            "in": "header",
+            "name": "api-version",
+            "description": ""
+          }
+        ]
+      },
+      "put": {
+        "summary": "Update a Vacancy",
+        "operationId": "put-Data-Vacancy-id",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "304": {
+            "description": "Not Modified"
+          }
+        },
+        "tags": [
+          "Data"
+        ],
+        "description": "Update a Vacancy",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "info"
+          },
+          {
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query",
+            "name": "active"
+          },
+          {
+            "schema": {
+              "type": "number",
+              "default": "1.0",
+              "format": "double"
+            },
+            "in": "header",
+            "name": "api-version",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "/Data/Vacancy": {
+      "get": {
+        "summary": "List all the Vacancy",
+        "tags": [
+          "Data"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "vacancyId": {
+                        "type": "string"
+                      },
+                      "info": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "active": {
+                        "type": "integer"
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "/Data/Vacancy": {
+                    "value": [
+                      {
+                        "vacancyId": "Death",
+                        "info": null,
+                        "active": 1
+                      },
+                      {
+                        "vacancyId": "Force",
+                        "info": null,
+                        "active": 1
+                      },
+                      {
+                        "vacancyId": "Retire",
+                        "info": null,
+                        "active": 1
+                      },
+                      {
+                        "vacancyId": "Terminate",
+                        "info": null,
+                        "active": 1
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-Data-Vacancy",
+        "description": "Gets the full list of all the data from the Vacancy",
+        "parameters": [
+          {
+            "schema": {
+              "type": "number",
+              "default": "1.0",
+              "format": "double"
+            },
+            "in": "header",
+            "name": "api-version",
+            "description": ""
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "active",
+                "inactive"
+              ]
+            },
+            "in": "query",
+            "name": "State"
+          }
+        ]
+      }
+    },
+    "/ActionLog": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [
+          "ActionLog"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "changelogId": {
+                            "type": "string"
+                          },
+                          "action": {
+                            "type": "string"
+                          },
+                          "positionId": {
+                            "type": "string"
+                          },
+                          "empno": {
+                            "type": "string"
+                          },
+                          "changedateTime": {
+                            "type": "string"
+                          },
+                          "actionDateTime": {
+                            "type": "string"
+                          },
+                          "arg0": {
+                            "type": "string"
+                          },
+                          "arg1": {
+                            "type": "string"
+                          },
+                          "arg2": {
+                            "type": "string"
+                          },
+                          "arg3": {
+                            "type": "string"
+                          },
+                          "arg4": {
+                            "type": "string"
+                          },
+                          "arg5": {
+                            "type": "string"
+                          },
+                          "undid": {
+                            "type": "string"
+                          },
+                          "user": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "ActionLog_ID": {
+                            "type": "string"
+                          },
+                          "Action_ID": {
+                            "type": "string"
+                          },
+                          "Desc": {
+                            "type": "string"
+                          },
+                          "On": {
+                            "type": "string"
+                          },
+                          "Text": {
+                            "type": "string"
+                          },
+                          "Coded": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string"
+                                },
+                                "rawVal": {
+                                  "type": "string"
+                                },
+                                "val": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "type": "array"
+                },
+                "examples": {
+                  "/ActionLog": {
+                    "value": [
+                      {
+                        "changelogId": 1585083771107,
+                        "action": 3001,
+                        "positionId": null,
+                        "empno": 10132784,
+                        "changedateTime": "2020-03-24T21:02:51.107",
+                        "actionDateTime": "2020-04-26T00:00:00",
+                        "arg0": "10132784",
+                        "arg1": "Light Duty-LN",
+                        "arg2": null,
+                        "arg3": null,
+                        "arg4": null,
+                        "arg5": null,
+                        "undid": null,
+                        "user": "AUSPS\\AP9034"
+                      },
+                      {
+                        "changelogId": 1584987189433,
+                        "action": 2001,
+                        "positionId": 1936,
+                        "empno": null,
+                        "changedateTime": "2020-03-23T18:13:09.433",
+                        "actionDateTime": "2020-03-23T00:00:00",
+                        "arg0": "1936",
+                        "arg1": "10117213",
+                        "arg2": "Force",
+                        "arg3": null,
+                        "arg4": null,
+                        "arg5": null,
+                        "undid": null,
+                        "user": "AUSPS\\ap9000"
+                      }
+                    ]
+                  },
+                  "/ActionLog - readable": {
+                    "value": [
+                      {
+                        "ActionLog_ID": 1585083771107,
+                        "Action_ID": 3001,
+                        "Desc": "Set a person's status",
+                        "On": "04/26/2020",
+                        "Text": "Brady, Robert was given the status: Light Duty-LN.",
+                        "Coded": [
+                          {
+                            "type": "Person",
+                            "rawVal": "10132784",
+                            "val": "Brady, Robert"
+                          },
+                          {
+                            "type": "text",
+                            "rawVal": " was given the status: ",
+                            "val": " was given the status: "
+                          },
+                          {
+                            "type": "StatusType",
+                            "rawVal": "Light Duty-LN",
+                            "val": "Light Duty-LN"
+                          },
+                          {
+                            "type": "text",
+                            "rawVal": ".",
+                            "val": "."
+                          }
+                        ]
+                      },
+                      {
+                        "ActionLog_ID": 1584987189433,
+                        "Action_ID": 2001,
+                        "Desc": "Set a position to vacant",
+                        "On": "03/23/2020",
+                        "Text": "PIO  was moved out of Silva, Destiny because of Force.",
+                        "Coded": [
+                          {
+                            "type": "Position",
+                            "rawVal": "1936",
+                            "val": "PIO "
+                          },
+                          {
+                            "type": "text",
+                            "rawVal": " was moved out of ",
+                            "val": " was moved out of "
+                          },
+                          {
+                            "type": "Person",
+                            "rawVal": "10117213",
+                            "val": "Silva, Destiny"
+                          },
+                          {
+                            "type": "text",
+                            "rawVal": " because of ",
+                            "val": " because of "
+                          },
+                          {
+                            "type": "Vacancy",
+                            "rawVal": "Force",
+                            "val": "Force"
+                          },
+                          {
+                            "type": "text",
+                            "rawVal": ".",
+                            "val": "."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "operationId": "get-ActionLog",
+        "description": "Get a list of action logs. ",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "api-version"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "Planning",
+                "Live"
+              ],
+              "default": "Live"
+            },
+            "in": "header",
+            "name": "type"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "readable",
+                "ShowUnder2000",
+                "ShowUndid"
+              ]
+            },
+            "in": "query",
+            "name": "options"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "startDate"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "endDate"
+          },
+          {
+            "schema": {
+              "type": "number"
+            },
+            "in": "query",
+            "name": "PositionID"
+          },
+          {
+            "schema": {
+              "type": "number"
+            },
+            "in": "query",
+            "name": "Empno"
+          }
+        ]
+      },
+      "post": {
+        "summary": "",
+        "operationId": "post-ActionLog",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number"
+                    }
+                  }
+                },
+                "examples": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "tags": [
+          "ActionLog"
+        ],
+        "description": "Create a new action log.",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "api-version"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "default": "Live",
+              "enum": [
+                "Planning",
+                "Live"
+              ]
+            },
+            "in": "header",
+            "name": "type"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "action",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "date",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "positionId"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "empNo"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "arg0"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "arg1"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "arg2"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "arg3"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "arg4"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "arg5"
+          }
+        ]
+      }
+    },
+    "/ActionLog/{actionLogId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "actionLogId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [
+          "ActionLog"
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "properties": {
+                        "changelogId": {
+                          "type": "integer"
+                        },
+                        "action": {
+                          "type": "number"
+                        },
+                        "positionId": {
+                          "type": "number"
+                        },
+                        "empno": {
+                          "type": "number"
+                        },
+                        "changedateTime": {
+                          "type": "string"
+                        },
+                        "actionDateTime": {
+                          "type": "string"
+                        },
+                        "arg0": {
+                          "type": "string"
+                        },
+                        "arg1": {
+                          "type": "string"
+                        },
+                        "arg3": {
+                          "type": "string"
+                        },
+                        "arg4": {
+                          "type": "string"
+                        },
+                        "arg5": {
+                          "type": "string"
+                        },
+                        "undid": {
+                          "type": "string"
+                        },
+                        "user": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    {
+                      "properties": {
+                        "ActionLog_ID": {
+                          "type": "number"
+                        },
+                        "Action_ID": {
+                          "type": "number"
+                        },
+                        "Desc": {
+                          "type": "string"
+                        },
+                        "On": {
+                          "type": "string"
+                        },
+                        "Text": {
+                          "type": "string"
+                        },
+                        "Coded": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "type": "string"
+                              },
+                              "rawVal": {
+                                "type": "string"
+                              },
+                              "val": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "type": "object"
+                },
+                "examples": {
+                  "/ActionLog/1585081161966 -- readable": {
+                    "value": {
+                      "ActionLog_ID": 1585081161966,
+                      "Action_ID": 4003,
+                      "Desc": "Change the reporting to position ",
+                      "On": "04/26/2020",
+                      "Text": "Police Technology Planning Sgt superviser changed from Police Technology Planning LT to North Patrol Bureau.",
+                      "Coded": [
+                        {
+                          "type": "Position",
+                          "rawVal": "1821",
+                          "val": "Police Technology Planning Sgt"
+                        },
+                        {
+                          "type": "text",
+                          "rawVal": " superviser changed from ",
+                          "val": " superviser changed from "
+                        },
+                        {
+                          "type": "Position",
+                          "rawVal": "1820",
+                          "val": "Police Technology Planning LT"
+                        },
+                        {
+                          "type": "text",
+                          "rawVal": " to ",
+                          "val": " to "
+                        },
+                        {
+                          "type": "Position",
+                          "rawVal": "4",
+                          "val": "North Patrol Bureau"
+                        },
+                        {
+                          "type": "text",
+                          "rawVal": ".",
+                          "val": "."
+                        }
+                      ]
+                    }
+                  },
+                  "/ActionLog/1585081161966": {
+                    "value": {
+                      "changelogId": 1585081161966,
+                      "action": 4003,
+                      "positionId": 1821,
+                      "empno": null,
+                      "changedateTime": "2020-03-24T20:19:21.967",
+                      "actionDateTime": "2020-04-26T00:00:00",
+                      "arg0": "1821",
+                      "arg1": "1820",
+                      "arg2": "4",
+                      "arg3": null,
+                      "arg4": null,
+                      "arg5": null,
+                      "undid": null,
+                      "user": "AUSPS\\AP9034"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "operationId": "get-ActionLog-actionLogId",
+        "parameters": [
+          {
+            "schema": {
+              "type": "array",
+              "enum": [
+                "readable"
+              ]
+            },
+            "in": "query",
+            "name": "options",
+            "description": ""
+          },
+          {
+            "schema": {
+              "type": "string",
+              "default": "1.0"
+            },
+            "in": "header",
+            "name": "api-version"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "Planning",
+                "Live"
+              ],
+              "default": "Live"
+            },
+            "in": "header",
+            "name": "type"
+          }
+        ],
+        "description": "Get an ActionLog"
+      },
+      "put": {
+        "summary": "",
+        "operationId": "put-ActionLog",
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "description": "Updates an existing log.",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "api-version"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "Planning",
+                "Live"
+              ],
+              "default": "Live"
+            },
+            "in": "header",
+            "name": "type"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "Id"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "action"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "date"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "positionId"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "empNo"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "arg0"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "arg1"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "arg2"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "arg3"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "arg4"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "arg5"
+          }
+        ],
+        "tags": [
+          "ActionLog"
+        ]
+      }
+    },
+    "/People": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [
+          "People"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "operationId": "get-People",
+        "description": "Gets all empno"
+      }
+    },
+    "/People/{empNo}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "empNo",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [
+          "People"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "operationId": "get-People-empNo",
+        "description": "desc"
+      }
+    },
+    "/People/{empNo}/Duties": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "empNo",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [
+          "People"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "operationId": "get-People-empNo-Duties",
+        "description": "desc"
+      }
+    },
+    "/People/{empNo}/Duties/{id}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "empNo",
+          "in": "path",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "id",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [
+          "People"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "operationId": "get-People-empNo-Duties-id",
+        "description": "desc"
+      }
+    },
+    "/People/{empNo}/Statuses": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "empNo",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [
+          "People"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "operationId": "get-People-empNo-Statuses",
+        "description": "desc"
+      }
+    },
+    "/People/{empNo}/Statuses/{id}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "empNo",
+          "in": "path",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "id",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [
+          "People"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "operationId": "get-People-empNo-Statuses-id",
+        "description": "desc"
+      }
+    },
+    "/Positions": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [
+          "Positions"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "operationId": "get-Positions",
+        "description": "desc"
+      }
+    },
+    "/Positions/{positionId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "positionId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [
+          "Positions"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "operationId": "get-Positions-positionId",
+        "description": "desc"
+      }
+    },
+    "/Positions/{positionId}/Assignments": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "positionId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [
+          "Positions"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "operationId": "get-Positions-positionId-Assignments",
+        "description": "desc"
+      }
+    },
+    "/Ranks/Approved": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [
+          "Ranks"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "operationId": "get-Ranks-Approved",
+        "description": "desc"
+      }
+    },
+    "/Ranks/Authorized": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [
+          "Ranks"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "operationId": "get-Ranks-Authorized",
+        "description": "desc"
+      }
+    },
+    "/Org/Search": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [
+          "Org"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "operationId": "get-Org-Search",
+        "description": "Search Data"
+      },
+      "post": {
+        "summary": "",
+        "operationId": "post-Org-Search",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "The real search",
+        "tags": [
+          "Org"
+        ]
+      }
+    },
+    "/ActionLog/Invalidate": {
+      "post": {
+        "summary": "",
+        "operationId": "post-ActionLog-Invalidate",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "desc",
+        "tags": [
+          "ActionLog"
+        ]
+      }
+    },
+    "/Org/Reset": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [
+          "Org"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "operationId": "get-Org-Reset",
+        "description": "desc"
+      }
+    },
+    "/Positions/Root": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [
+          "Positions"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "operationId": "get-Positions-Root",
+        "description": "desc"
+      }
+    },
+    "/Positions/{positionId}/Children": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "positionId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [
+          "Positions"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "operationId": "get-Positions-positionId-Children",
+        "description": "desc"
+      }
+    },
+    "/ActionLog/Undo": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [
+          "ActionLog"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "operationId": "get-ActionLog-Undo",
+        "description": "desc"
+      },
+      "post": {
+        "summary": "",
+        "operationId": "post-ActionLog-Undo",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "ActionLog"
+        ],
+        "description": "desc"
+      }
+    },
+    "/ActionLog/Redo": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [
+          "ActionLog"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "operationId": "get-ActionLog-Redo",
+        "description": "desc"
+      },
+      "post": {
+        "summary": "",
+        "operationId": "post-ActionLog-Redo",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "desc",
+        "tags": [
+          "ActionLog"
+        ]
+      }
+    },
+    "/Ranks": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [
+          "Ranks"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "operationId": "get-Ranks",
+        "description": "desc"
+      }
+    },
+    "/Actions": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [
+          "Actions"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "operationId": "get-Actions",
+        "description": "desc"
+      }
+    },
+    "/Actions/1000": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [
+          "Actions"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "operationId": "get-Actions-1000",
+        "description": "desc"
+      }
+    },
+    "/Actions/1001": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [
+          "Actions"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "operationId": "get-Actions-1001",
+        "description": "desc"
+      }
+    },
+    "/Actions/1002": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [
+          "Actions"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "operationId": "get-Actions-1002",
+        "description": "desc"
+      }
+    },
+    "/Actions/1003": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [
+          "Actions"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "operationId": "get-Actions-1003",
+        "description": "desc"
+      }
+    },
+    "/Actions/1004": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [
+          "Actions"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "operationId": "get-Actions-1004",
+        "description": "desc"
+      }
+    },
+    "/Actions/2001": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [
+          "Actions"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "operationId": "get-Actions-2001",
+        "description": "desc"
+      }
+    },
+    "/Actions/2101": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [
+          "Actions"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "operationId": "get-Actions-2101",
+        "description": "desc"
+      }
+    },
+    "/Actions/2102": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [
+          "Actions"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "operationId": "get-Actions-2102",
+        "description": "desc"
+      }
+    },
+    "/Actions/2103": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [
+          "Actions"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "operationId": "get-Actions-2103",
+        "description": "desc"
+      }
+    },
+    "/Actions/3001": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [
+          "Actions"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "operationId": "get-Actions-3001",
+        "description": "desc"
+      }
+    },
+    "/Actions/3002": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [
+          "Actions"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "operationId": "get-Actions-3002",
+        "description": "desc"
+      }
+    },
+    "/Actions/3101": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [
+          "Actions"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "operationId": "get-Actions-3101",
+        "description": "desc"
+      }
+    },
+    "/Actions/3102": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [
+          "Actions"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "operationId": "get-Actions-3102",
+        "description": "desc"
+      }
+    },
+    "/Actions/3201": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [
+          "Actions"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "operationId": "get-Actions-3201",
+        "description": "desc"
+      }
+    },
+    "/Actions/3202": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [
+          "Actions"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "operationId": "get-Actions-3202",
+        "description": "desc"
+      }
+    },
+    "/Actions/4001": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [
+          "Actions"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "operationId": "get-Actions-4001",
+        "description": "desc"
+      }
+    },
+    "/Actions/4002": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [
+          "Actions"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "operationId": "get-Actions-4002",
+        "description": "desc"
+      }
+    },
+    "/Actions/4003": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [
+          "Actions"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "operationId": "get-Actions-4003",
+        "description": "desc"
+      }
+    },
+    "/Actions/4004": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [
+          "Actions"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "operationId": "get-Actions-4004",
+        "description": "desc"
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {},
+    "schemas": {}
+  },
+  "tags": [
+    {
+      "name": "Data",
+      "description": "All the data"
+    },
+    {
+      "name": "ActionLog",
+      "description": "ActionLog"
+    },
+    {
+      "name": "Actions",
+      "description": "Actions"
+    },
+    {
+      "name": "Org",
+      "description": "Org"
+    },
+    {
+      "name": "People",
+      "description": "People"
+    },
+    {
+      "name": "Positions",
+      "description": "Positions"
+    },
+    {
+      "name": "Ranks",
+      "description": "Ranks"
+    }
+  ]
+}
